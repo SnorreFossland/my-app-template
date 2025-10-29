@@ -1,3 +1,249 @@
-@tailwind base; @tailwind components; @tailwind utilities;
-:root { --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
-html { color-scheme: light dark; }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --border: 222 12% 90%;
+  --input: 0 0% 100%;
+  --ring: 222 89% 53%;
+  --background: 0 0% 100%;
+  --foreground: 222 47% 11%;
+  --primary: 222 89% 53%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222 47% 11%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215 20% 35%;
+  --accent: 222 89% 53%;
+  --accent-foreground: 0 0% 100%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 47% 11%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
+  --chart-1: 222 89% 53%;
+  --chart-2: 4 90% 58%;
+  --chart-3: 43 90% 55%;
+  --chart-4: 142 71% 45%;
+  --chart-5: 199 89% 48%;
+  color-scheme: light;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+}
+
+.dark {
+  --border: 217 33% 17%;
+  --input: 217 33% 17%;
+  --ring: 222 89% 53%;
+  --background: 222 47% 11%;
+  --foreground: 210 40% 98%;
+  --primary: 222 89% 53%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 217 33% 17%;
+  --secondary-foreground: 210 40% 98%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --muted: 217 33% 17%;
+  --muted-foreground: 215 20% 65%;
+  --accent: 222 89% 53%;
+  --accent-foreground: 0 0% 100%;
+  --popover: 222 47% 11%;
+  --popover-foreground: 210 40% 98%;
+  --card: 222 47% 11%;
+  --card-foreground: 210 40% 98%;
+  --chart-1: 222 89% 70%;
+  --chart-2: 4 90% 62%;
+  --chart-3: 43 90% 65%;
+  --chart-4: 142 71% 55%;
+  --chart-5: 199 89% 60%;
+  color-scheme: dark;
+}
+
+.theme-forest {
+  --border: 125 20% 78%;
+  --input: 120 22% 96%;
+  --ring: 142 71% 45%;
+  --background: 120 22% 96%;
+  --foreground: 152 24% 16%;
+  --primary: 142 71% 45%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 122 27% 90%;
+  --secondary-foreground: 152 24% 16%;
+  --destructive: 0 74% 54%;
+  --destructive-foreground: 0 0% 100%;
+  --muted: 122 18% 85%;
+  --muted-foreground: 152 16% 30%;
+  --accent: 171 45% 40%;
+  --accent-foreground: 0 0% 100%;
+  --popover: 120 22% 98%;
+  --popover-foreground: 152 24% 16%;
+  --card: 120 22% 98%;
+  --card-foreground: 152 24% 16%;
+  --chart-1: 142 71% 45%;
+  --chart-2: 171 45% 40%;
+  --chart-3: 94 48% 54%;
+  --chart-4: 26 74% 55%;
+  --chart-5: 352 63% 52%;
+  color-scheme: light;
+}
+
+.theme-forest-dark {
+  --border: 151 22% 24%;
+  --input: 151 22% 24%;
+  --ring: 142 71% 45%;
+  --background: 149 30% 12%;
+  --foreground: 122 60% 92%;
+  --primary: 142 61% 50%;
+  --primary-foreground: 125 30% 12%;
+  --secondary: 153 23% 18%;
+  --secondary-foreground: 122 60% 92%;
+  --destructive: 0 74% 54%;
+  --destructive-foreground: 0 0% 100%;
+  --muted: 153 17% 24%;
+  --muted-foreground: 128 20% 72%;
+  --accent: 169 46% 45%;
+  --accent-foreground: 125 30% 12%;
+  --popover: 149 30% 16%;
+  --popover-foreground: 122 60% 92%;
+  --card: 149 30% 16%;
+  --card-foreground: 122 60% 92%;
+  --chart-1: 142 61% 50%;
+  --chart-2: 169 46% 45%;
+  --chart-3: 94 48% 58%;
+  --chart-4: 26 74% 58%;
+  --chart-5: 352 63% 56%;
+  color-scheme: dark;
+}
+
+.theme-ocean {
+  --border: 204 34% 78%;
+  --input: 199 97% 97%;
+  --ring: 199 89% 48%;
+  --background: 199 97% 97%;
+  --foreground: 210 34% 18%;
+  --primary: 199 89% 48%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 197 81% 92%;
+  --secondary-foreground: 210 34% 18%;
+  --destructive: 353 74% 55%;
+  --destructive-foreground: 0 0% 100%;
+  --muted: 200 53% 88%;
+  --muted-foreground: 208 23% 35%;
+  --accent: 187 82% 45%;
+  --accent-foreground: 0 0% 100%;
+  --popover: 199 97% 99%;
+  --popover-foreground: 210 34% 18%;
+  --card: 199 97% 99%;
+  --card-foreground: 210 34% 18%;
+  --chart-1: 199 89% 48%;
+  --chart-2: 187 82% 45%;
+  --chart-3: 212 84% 60%;
+  --chart-4: 153 47% 47%;
+  --chart-5: 20 89% 60%;
+  color-scheme: light;
+}
+
+.theme-ocean-dark {
+  --border: 207 26% 30%;
+  --input: 207 26% 30%;
+  --ring: 199 89% 58%;
+  --background: 214 35% 12%;
+  --foreground: 202 74% 92%;
+  --primary: 199 89% 58%;
+  --primary-foreground: 212 35% 16%;
+  --secondary: 212 28% 20%;
+  --secondary-foreground: 202 74% 92%;
+  --destructive: 353 74% 62%;
+  --destructive-foreground: 0 0% 100%;
+  --muted: 208 22% 26%;
+  --muted-foreground: 202 40% 70%;
+  --accent: 187 82% 54%;
+  --accent-foreground: 214 35% 12%;
+  --popover: 214 35% 16%;
+  --popover-foreground: 202 74% 92%;
+  --card: 214 35% 16%;
+  --card-foreground: 202 74% 92%;
+  --chart-1: 199 89% 58%;
+  --chart-2: 187 82% 54%;
+  --chart-3: 212 84% 65%;
+  --chart-4: 153 47% 55%;
+  --chart-5: 20 89% 66%;
+  color-scheme: dark;
+}
+
+.theme-sunset {
+  --border: 24 28% 82%;
+  --input: 25 80% 96%;
+  --ring: 17 90% 55%;
+  --background: 25 80% 96%;
+  --foreground: 12 42% 20%;
+  --primary: 17 90% 55%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 33 100% 88%;
+  --secondary-foreground: 12 42% 20%;
+  --destructive: 353 74% 55%;
+  --destructive-foreground: 0 0% 100%;
+  --muted: 31 52% 82%;
+  --muted-foreground: 18 46% 35%;
+  --accent: 326 70% 58%;
+  --accent-foreground: 0 0% 100%;
+  --popover: 25 80% 98%;
+  --popover-foreground: 12 42% 20%;
+  --card: 25 80% 98%;
+  --card-foreground: 12 42% 20%;
+  --chart-1: 17 90% 55%;
+  --chart-2: 326 70% 58%;
+  --chart-3: 204 90% 55%;
+  --chart-4: 142 71% 45%;
+  --chart-5: 44 85% 55%;
+  color-scheme: light;
+}
+
+.theme-sunset-dark {
+  --border: 18 60% 28%;
+  --input: 18 60% 28%;
+  --ring: 17 90% 65%;
+  --background: 20 64% 12%;
+  --foreground: 27 53% 92%;
+  --primary: 17 83% 63%;
+  --primary-foreground: 20 64% 12%;
+  --secondary: 28 58% 20%;
+  --secondary-foreground: 27 53% 92%;
+  --destructive: 353 74% 62%;
+  --destructive-foreground: 0 0% 100%;
+  --muted: 21 48% 24%;
+  --muted-foreground: 26 38% 72%;
+  --accent: 329 69% 64%;
+  --accent-foreground: 20 64% 12%;
+  --popover: 20 64% 16%;
+  --popover-foreground: 27 53% 92%;
+  --card: 20 64% 16%;
+  --card-foreground: 27 53% 92%;
+  --chart-1: 17 83% 63%;
+  --chart-2: 329 69% 64%;
+  --chart-3: 204 90% 60%;
+  --chart-4: 142 71% 55%;
+  --chart-5: 44 85% 60%;
+  color-scheme: dark;
+}
+
+@layer base {
+  *, ::before, ::after {
+    box-sizing: border-box;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+}
+
+.test-bg {
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  padding: 1rem;
+}
