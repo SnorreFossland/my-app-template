@@ -96,6 +96,9 @@ export default function TopNav() {
             <DropdownMenuItem asChild>
               <Link href="/dashboard">Dashboard</Link>
             </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link href="/admin">Admin</Link>
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
         <div className="ml-2 flex items-center">

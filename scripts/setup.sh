@@ -2,6 +2,41 @@
 #!/usr/bin/env bash
 
 set -euo pipefail
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+prompt_next_script() {
+  if [ ! -t 0 ] || [ ! -t 1 ]; then
+    return 0
+  fi
+
+  local prompt="$1"
+  shift || return 0
+
+  if [ "$#" -eq 0 ]; then
+    return 0
+  fi
+
+  local -a orig_cmd=("$@")
+  local -a cmd=("${orig_cmd[@]}")
+
+  if [ -f "${cmd[0]}" ] && [ ! -x "${cmd[0]}" ]; then
+    if [[ "${cmd[0]}" == *.sh ]]; then
+      cmd=(bash "${cmd[@]}")
+    fi
+  fi
+
+  local display_cmd="${cmd[*]}"
+
+  printf "%s [y/N] " "$prompt"
+  read -r reply || return 0
+  if [[ "$reply" =~ ^[Yy](es)?$ ]]; then
+    echo "Running ${display_cmd} ..."
+    "${cmd[@]}"
+  else
+    echo "Skipping ${display_cmd}."
+  fi
+}
+
 export PATH="$HOME/.nvm/versions/node/v20.9.0/bin:$PATH"
 # ---- Node.js version check for Prisma ----
 REQUIRED_NODE_VERSION="18.18.0"
@@ -53,6 +88,7 @@ if [ ! -d "$APP_NAME" ]; then
     --ts --tailwind --eslint --app --src-dir --import-alias "@/*"
 fi
 cd "$APP_NAME"
+PROJECT_DIR="$(pwd)"
 [ -d .git ] || git init -q
 
 # ---- tailwind setup (Tailwind v3 pinned) ----
@@ -677,10 +713,9 @@ fi
 if ! command -v specify >/dev/null 2>&1; then
   uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
 fi
-uvx --from git+https://github.com/github/spec-kit.git specify init . --force --ai codex || \
-specify init . --force --ai codex || true
-# uvx --from git+https://github.com/github/spec-kit.git specify init . --here --force --ai codex || \
-# specify init . --here --force --ai codex || true
+if command -v specify >/dev/null 2>&1; then
+  specify init . --force --ai copilot || true
+fi
 
 # ---- Codex CLI check ----
 if ! command -v codex >/dev/null 2>&1; then
@@ -751,3 +786,4 @@ git add -A
 git commit -m "scaffold: Next.js + Redux + RTKQ + shadcn + next-themes + Auth.js + Prisma + SpecKit + Sonner"
 
 echo "Done. Run: pnpm dev  → /signup → /login → /dashboard"
+prompt_next_script "Run the home scaffold script now?" "$SCRIPT_DIR/add-home-pages.sh" "$PROJECT_DIR"

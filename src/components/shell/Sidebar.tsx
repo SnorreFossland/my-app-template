@@ -8,7 +8,6 @@ import { cn } from "@/lib/utils";
 
 export const sidebarLinks = [
   { href: "/dashboard", label: "Dashboard" },
-  { href: "/dashboard", label: "Dashboard" },
   { href: "/overview", label: "Overview" },
   { href: "/features", label: "Features" },
   { href: "/analytics", label: "Analytics" },

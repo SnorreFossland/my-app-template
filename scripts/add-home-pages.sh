@@ -1,7 +1,44 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-cd "${1:-my-app}"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+prompt_next_script() {
+  if [ ! -t 0 ] || [ ! -t 1 ]; then
+    return 0
+  fi
+
+  local prompt="$1"
+  shift || return 0
+
+  if [ "$#" -eq 0 ]; then
+    return 0
+  fi
+
+  local -a orig_cmd=("$@")
+  local -a cmd=("${orig_cmd[@]}")
+
+  if [ -f "${cmd[0]}" ] && [ ! -x "${cmd[0]}" ]; then
+    if [[ "${cmd[0]}" == *.sh ]]; then
+      cmd=(bash "${cmd[@]}")
+    fi
+  fi
+
+  local display_cmd="${cmd[*]}"
+
+  printf "%s [y/N] " "$prompt"
+  read -r reply || return 0
+  if [[ "$reply" =~ ^[Yy](es)?$ ]]; then
+    echo "Running ${display_cmd} ..."
+    "${cmd[@]}"
+  else
+    echo "Skipping ${display_cmd}."
+  fi
+}
+
+TARGET_DIR_INPUT="${1:-my-app}"
+TARGET_DIR="$(cd "$TARGET_DIR_INPUT" && pwd)"
+cd "$TARGET_DIR"
 # Regenerates the current dashboard scaffold (navigation, pages, auth, store, and API routes)
 # using shadcn/ui primitives plus local theme, auth, and Redux helpers.
 
@@ -1078,3 +1115,4 @@ EOF
 fi
 
 echo "Dashboard scaffold updated. Run: pnpm dev → http://localhost:3000"
+prompt_next_script "Run the dashboard scaffold script now?" "$SCRIPT_DIR/add-dashboard-pages.sh" "$TARGET_DIR"
